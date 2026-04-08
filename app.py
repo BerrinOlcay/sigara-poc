@@ -121,7 +121,17 @@ def etiket_cikar(metin, client):
     )   
       
     import json
-    return response.output_text
+
+    try:
+        return json.loads(response.output_text)
+    except:
+        return {
+            "tetikleyiciler": [],
+            "motivasyonlar": [],
+            "guclukler": [],
+            "birakma_gecmisi": [],
+            "bagimlilik": "Belirtilmedi"
+    }
 
 st.set_page_config(page_title="Klinik Karar Destek Sistemi", layout="centered")
 
