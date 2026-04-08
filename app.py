@@ -121,7 +121,7 @@ def etiket_cikar(metin, client):
     )   
       
     import json
-    return json.loads(response.output_text)
+    return response.output_text
 
 st.set_page_config(page_title="Klinik Karar Destek Sistemi", layout="centered")
 
