@@ -182,7 +182,7 @@ if st.button("Analiz Et"):
     motivasyon = ", ".join(etiket.get("motivasyonlar", [])) or "Belirtilmedi"
     gucluk = ", ".join(etiket.get("guclukler", [])) or "Belirtilmedi"
     tetikleyici = ", ".join(etiket.get("tetikleyiciler", [])) or "Belirtilmedi"
-    bagimlilik = etiket.get("bagimlilik"), or "Belirtilmedi"
+    bagimlilik = etiket.get("bagimlilik") or "Belirtilmedi"
 
     st.write(f"*Motivasyon:* {motivasyon}")
     st.write(f"*Güçlük:* {gucluk}")
