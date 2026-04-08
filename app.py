@@ -119,7 +119,9 @@ def etiket_cikar(metin, client):
         model="gpt-4.1-mini",
         input=prompt
     )   
-      
+
+    st.write(response.output_text)
+    
     import json
 
     try:
