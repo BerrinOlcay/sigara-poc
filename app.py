@@ -164,7 +164,8 @@ Klinik Yorum:
 Öneri mutlaka hastanın ifadesindeki spesifik duruma DOĞRUDAN referans versin.
 Genel tavsiye verme, kişiye özel klinik yönlendirme yap.
 Öneri SOMUT ve UYGULANABİLİR olsun (örneğin: tetikleyici analizi, kısa hedef belirleme, nikotin replasman tedavisi gibi).
-Kaçamak ifadeler kullanma (“değerlendirilebilir”, “önerilir” gibi).
+Kesin ve buyurgan dil kullanma.
+Temkinli ve klinik öneri dili kullan ('önerilebilir', değerlendirilebilir', 'uygun olabilir').
 Gerekirse davranışsal ve farmakolojik yaklaşımı birlikte belirt.
 Öneri cümlelerinde klinik ve profesyonel ifade kullan.)
 
