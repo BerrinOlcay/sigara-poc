@@ -145,7 +145,19 @@ with col1:
 if st.button("Analiz Et"):
     rag_context = search(metin, chunks, embeddings, client)
     etiketler = etiket_cikar(metin, client)
-    st.write(etiketler)
+    st.markdown("### Hasta Profili")
+
+    etiket = etiketler
+
+    motivasyon = ", ".join(etiket.get("motivasyonlar", [])) or "Belirtilmedi"
+    gucluk = ", ".join(etiket.get("guclukler", [])) or "Belirtilmedi"
+    tetikleyici = ", ".join(etiket.get("tetikleyiciler", [])) or "Belirtilmedi"
+    bagimlilik = etiket.get("bagimlilik", "Belirtilmedi")
+
+    st.write(f"*Motivasyon:* {motivasyon}")
+    st.write(f"*Güçlük:* {gucluk}")
+    st.write(f"*Tetikleyiciler:* {tetikleyici}")
+    st.write(f"*Bağımlılık düzeyi:* {bagimlilik}")
     
     prompt = f"""
     Hasta ifadesinden çıkarılan etiketler:
