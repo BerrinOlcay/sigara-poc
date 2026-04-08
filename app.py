@@ -115,13 +115,13 @@ def etiket_cikar(metin, client):
     Sadece JSON döndür.
     JSON formatı aşağıdaki gibi olmalıdır:
 
-    {
+    {{
       "tetikleyiciler": [],
       "motivasyonlar": [],
       "guclukler": [],
       "birakma_gecmisi": [],
       "bagimlilik": ""
-    }
+    }}
 
     Kurallar:
     - Tüm alanlar DOLDURULMALIDIR, boş bırakma.
