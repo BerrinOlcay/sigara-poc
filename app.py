@@ -113,6 +113,24 @@ def etiket_cikar(metin, client):
     {metin}
     
     Sadece JSON döndür.
+    JSON formatı aşağıdaki gibi olmalıdır:
+
+    {
+      "tetikleyiciler": [],
+      "motivasyonlar": [],
+      "guclukler": [],
+      "birakma_gecmisi": [],
+      "bagimlilik": ""
+    }
+
+    Kurallar:
+    - Tüm alanlar DOLDURULMALIDIR, boş bırakma.
+    - Eğer bilgi yoksa:
+      - listeler için: []
+      - bagimlilik için: "Belirtilmedi" yaz.
+    - bagimlilik sadece şu değerlerden biri olmalıdır:
+      "düşük", "orta", "yüksek", "Belirtilmedi"
+    - Asla açıklama ekleme, sadece JSON döndür.
     """
         
     response = client.responses.create(
@@ -164,7 +182,7 @@ if st.button("Analiz Et"):
     motivasyon = ", ".join(etiket.get("motivasyonlar", [])) or "Belirtilmedi"
     gucluk = ", ".join(etiket.get("guclukler", [])) or "Belirtilmedi"
     tetikleyici = ", ".join(etiket.get("tetikleyiciler", [])) or "Belirtilmedi"
-    bagimlilik = etiket.get("bagimlilik", "Belirtilmedi")
+    bagimlilik = etiket.get("bagimlilik"), or "Belirtilmedi"
 
     st.write(f"*Motivasyon:* {motivasyon}")
     st.write(f"*Güçlük:* {gucluk}")
