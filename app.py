@@ -89,6 +89,40 @@ def search(query, chunks, embeddings, client):
     
     return chunks[best_index]
 
+def etiket_cikar(metin, client):
+    prompt = f"""
+    Aşağıdaki hasta konuşmasını analiz et ve sadece JSON formatında etiketleri çıkar.
+        
+    {{
+      "tetikleyiciler": [],
+      "motivasyonlar": [],
+      "guclukler": [],
+      "birakma_gecmisi": [],
+      "bagimlilik": ""
+    }}
+        
+    Kullanılabilecek etiketler:
+    
+    tetikleyiciler: stres, kahve, cay, yemek_sonrasi, alkol, sosyal_ortam, yalnizlik, of$
+    motivasyonlar: saglik, aile, cocuk, ekonomi
+    guclukler: sinirlilik, uykusuzluk, asiri_istek
+    birakma_gecmisi: onceki_deneme, relaps
+    bagimlilik: dusuk, orta, yuksek
+        
+    Hasta konuşması:
+    {metin}
+    
+    Sadece JSON döndür.
+    """
+        
+    response = client.responses.create(
+        model="gpt-4.1-mini",
+        input=prompt
+    )   
+      
+    import json
+    return json.loads(response.output_text)
+
 st.set_page_config(page_title="Klinik Karar Destek Sistemi", layout="centered")
 
 st.title("🚬 Sigara Bırakma - Klinik Karar Destek Sistemi")
@@ -106,12 +140,17 @@ st.write(f"Test embedding sayısı: {len(embeddings)}")
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    metin = st.text_area("Hasta Görüşmesi")
+    metin = st.text_area("Hasta Görüşmesi", height=250)
 
 if st.button("Analiz Et"):
     rag_context = search(metin, chunks, embeddings, client)
-
+    etiketler = etiket_cikar(metin, client)
+    st.write(etiketler)
+    
     prompt = f"""
+    Hasta ifadesinden çıkarılan etiketler:
+    {etiketler}
+    
 Aşağıdaki hasta ifadesini analiz et ve sadece aşağıdaki formatta cevap ver.
 
 Ambivalans: (Var / Yok)
@@ -130,15 +169,11 @@ Gerekirse davranışsal ve farmakolojik yaklaşımı birlikte belirt.
 Öneri cümlelerinde klinik ve profesyonel ifade kullan.)
 
 Kurallar:
-- Sadece bu başlıkları kullan
-- Uzun paragraf yazma
-- Ekstra açıklama yapma
+- Etiketleri kullan
+- Kısa ve net yaz
 - Öneriyi soru şeklinde yazma
 - Günlük dil kullanma, klinik ifade kullan
-- Hastanın kendi ifadesindeki ana problemi (örneğin: zorlanma, isteksizlik, erteleme) mutlaka öneriye yansıt
-- Öneride hastanın sigarayı hangi amaçla kullandığını veya hangi durumda zorlandığını açıkça yansıt
 - Klinik yorum ve öneri, hastanın ifadesindeki duygusal veya davranışsal örüntüyü açıkça adlandırsın
-- Öneride sigara kullanımının hastanın hangi psikolojik ihtiyacını karşıladığı (örneğin rahatlama, kaçınma, stres azaltma) açıkça ifade edilmelidir
 - Öneri cümlelerinde doğrudan emir kipi kullanma, klinik öneri dili kullan (örneğin: "önerilir", "uygun olacaktır")
 
 Rehber Bağlamı:
