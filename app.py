@@ -163,8 +163,7 @@ st.write(f"Yüklenen doküman sayısı: {len(docs)}")
 chunks = split_text(docs)
 st.write(f"Toplam parça sayısı: {len(chunks)}")
 
-embeddings = create_embeddings(chunks[:5], client)
-st.write(f"Test embedding sayısı: {len(embeddings)}")
+
 
 col1, col2, col3 = st.columns(3)
 with col1:
