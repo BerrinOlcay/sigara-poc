@@ -133,6 +133,7 @@ def etiket_cikar(metin, client):
     - bagimlilik sadece şu değerlerden biri olmalıdır:
       "düşük", "orta", "yüksek", "Belirtilmedi"
     - Asla açıklama ekleme, sadece JSON döndür.
+    - Hastanın ifadesinde zorluk, zorlanma, baş edememe, yoğun istek, alışkanlık veya kontrol kaybı ima ediliyorsa, bunları uygun "güçlükler" etiketi ile eşleştir.
     """
         
     response = client.responses.create(
