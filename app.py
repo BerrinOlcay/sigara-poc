@@ -163,7 +163,7 @@ st.caption("Privacy by Design: Bu PoC kapsamında girilen hasta verileri anonim 
 docs = load_documents("documents")
 
 for d in docs:
-    st.write(d.metadata.get("source", "unknown"))
+    st.write(d)
     
 st.write(f"Yüklenen doküman sayısı: {len(docs)}")
 
