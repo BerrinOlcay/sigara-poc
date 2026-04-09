@@ -6,6 +6,7 @@ client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 import os
 from pypdf import PdfReader
 
+@st.cache_data
 def load_documents(folder_path):
     documents = []
     
@@ -159,7 +160,7 @@ st.title("🚬 Sigara Bırakma - Klinik Karar Destek Sistemi")
 st.markdown("Bu sistem, hasta ifadelerini analiz ederek klinik karar desteği sağlar.")
 st.caption("Privacy by Design: Bu PoC kapsamında girilen hasta verileri anonim olarak işlenmekte olup kalıcı olarak saklanmamaktadır.")
 
-docs = load_documents("documents")
+docs = load_documents("documents_" + str(os.listdir("documents")))
 st.write(f"Yüklenen doküman sayısı: {len(docs)}")
 
 chunks = split_text(docs)
