@@ -190,6 +190,28 @@ if st.button("Analiz Et"):
     st.write(f"*Tetikleyiciler:* {tetikleyici}")
     st.write(f"*Bağımlılık düzeyi:* {bagimlilik}")
     
+    st.markdown("### Referans Öneri Tipi")
+    referans_oneri = []
+    # Referans öneri tipi belirleme (Excel mantığı simülasyonu)
+
+    if motivasyon in ["istekli", "kararsız"]:
+        referans_oneri.append("Profil ve motivasyon odaklı")
+
+    if tetikleyici:
+        referans_oneri.append("Tetikleyici ve ritüel odaklı")
+
+    if bagimlilik == "yüksek":
+        referans_oneri.append("Yüksek bağımlılık / farmakolojik destek odaklı")
+
+    if bagimlilik in ["orta", "yüksek"]:
+        referans_oneri.append("Davranış yönetimi ve sosyal/ekonomik farkındalık odaklı")
+
+    if referans_oneri:
+        for r in referans_oneri:
+            st.write(f"- {r}")
+    else:
+        st.write("Belirlenemedi")
+    
     prompt = f"""
     Hasta ifadesinden çıkarılan etiketler:
     {etiketler}
