@@ -161,10 +161,6 @@ st.markdown("Bu sistem, hasta ifadelerini analiz ederek klinik karar desteği sa
 st.caption("Privacy by Design: Bu PoC kapsamında girilen hasta verileri anonim olarak işlenmekte olup kalıcı olarak saklanmamaktadır.")
 
 docs = load_documents("documents")
-
-for d in docs:
-    st.write(d)
-    
 st.write(f"Yüklenen doküman sayısı: {len(docs)}")
 
 chunks = split_text(docs)
