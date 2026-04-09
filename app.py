@@ -7,7 +7,7 @@ import os
 from pypdf import PdfReader
 
 @st.cache_data
-def load_documents(folder_path):
+def load_documents(folder_path, file_list_hash):
     documents = []
     
     for filename in os.listdir(folder_path):
@@ -160,7 +160,7 @@ st.title("🚬 Sigara Bırakma - Klinik Karar Destek Sistemi")
 st.markdown("Bu sistem, hasta ifadelerini analiz ederek klinik karar desteği sağlar.")
 st.caption("Privacy by Design: Bu PoC kapsamında girilen hasta verileri anonim olarak işlenmekte olup kalıcı olarak saklanmamaktadır.")
 
-docs = load_documents("documents_" + str(os.listdir("documents")))
+docs = load_documents("documents", str(os.listdir("documents")))
 st.write(f"Yüklenen doküman sayısı: {len(docs)}")
 
 chunks = split_text(docs)
