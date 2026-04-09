@@ -6,6 +6,7 @@ client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 import os
 from pypdf import PdfReader
 
+@st.cache_data
 def load_documents(folder_path):
     documents = []
     
