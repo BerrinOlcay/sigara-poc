@@ -38,6 +38,7 @@ def load_documents(folder_path):
     
     return documents
 
+@st.cache_data
 def split_text(documents, chunk_size=500):
     chunks = []
     
