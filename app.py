@@ -190,16 +190,16 @@ if st.button("Analiz Et"):
     # Excel'den türetilmiş öneri kalıpları
     ekstra_oneriler = []
 
-    if "kahve" in tetikleyici:
+    if tetikleyici and "kahve" in tetikleyici:
         ekstra_oneriler.append("Kahve ile ilişkilenen sigara kullanımını azaltmak için kahve yerine bitki çayı gibi alternatif içecekler denenebilir.")
 
-    if "stres" in tetikleyici:
+    if tetikleyici and "stres" in tetikleyici:
         ekstra_oneriler.append("Stres anlarında sigara yerine nefes egzersizi veya kısa yürüyüş gibi alternatif baş etme yöntemleri önerilebilir.")
 
-    if "yemek" in tetikleyici:
+    if tetikleyici and "yemek" in tetikleyici:
         ekstra_oneriler.append("Yemek sonrası sigara alışkanlığını kırmak için farklı bir rutin (örneğin su içmek veya kısa bir aktivite) oluşturulabilir.")
 
-    if "aile" in motivasyon:
+    if motivasyon and "aile" in motivasyon:
         ekstra_oneriler.append("Aile desteği sürece dahil edilerek bırakma motivasyonu güçlendirilebilir.")
     
     excel_baglami = "\n".join(ekstra_oneriler) if ekstra_oneriler else "Ekstra öneri kalıbı yok."
