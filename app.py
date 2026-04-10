@@ -178,8 +178,9 @@ with col1:
     metin = st.text_area("Hasta Görüşmesi", height=250)
 
 if st.button("Analiz Et"):
-    embeddings = create_embeddings(chunks[:200])
-    rag_context = search(metin, chunks, embeddings, client)
+    secili_chunks = chunks[::max(1, len(chunks)//200)][:200]
+    embeddings = create_embeddings(secili_chunks)
+    rag_context = search(metin, secili_chunks, embeddings, client)
     etiketler = etiket_cikar(metin, client)
     st.markdown("### Hasta Profili")
     
