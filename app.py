@@ -175,7 +175,7 @@ with col1:
 
 if st.button("Analiz Et"):
     if "embeddings" not in st.session_state:
-        st.session_state.embeddings = create_embeddings(chunks[:500])
+        st.session_state.embeddings = create_embeddings(chunks[:300])
 
     embeddings = st.session_state.embeddings
     rag_context = search(metin, chunks, embeddings, client)
