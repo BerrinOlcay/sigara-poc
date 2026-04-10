@@ -238,8 +238,8 @@ if st.button("Analiz Et"):
     
     Sen bir klinik karar destek sistemisin.
 
-    Verilen rehber bağlamını ve davranışsal öneri kalıplarını birlikte değerlendirerek, hastaya özel, somut ve uygulanabilir öneriler üret.
-
+    Verilen rehber bağlamını ve davranışsal öneri kalıplarını birlikte değerlendirerek, hastaya özgü durumu analiz eden ve SADECE sağlık profesyoneline yönelik klinik öneriler üret.
+    
     Genel ifadelerden kaçın, mümkün olduğunca spesifik ve davranış odaklı öneriler ver.
     
     Hasta ifadesinden çıkarılan etiketler:
@@ -255,6 +255,7 @@ Klinik Yorum:
 
 Öneri:
 (Kısa, profesyonel ve klinik dilde yaz.
+Öneriler doğrudan hastaya hitap etmemeli, sağlık profesyonellerine yönelik olmalıdır.
 Öneri mutlaka hastanın ifadesindeki spesifik duruma DOĞRUDAN referans versin.
 Genel tavsiye verme, kişiye özel klinik yönlendirme yap.
 Öneri SOMUT ve UYGULANABİLİR olsun (örneğin: tetikleyici analizi, kısa hedef belirleme, nikotin replasman tedavisi gibi).
