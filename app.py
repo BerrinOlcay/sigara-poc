@@ -108,8 +108,8 @@ def etiket_cikar(metin, client):
     Kullanılabilecek etiketler:
     
     tetikleyiciler: stres, kahve, cay, yemek_sonrasi, alkol, sosyal_ortam, yalnizlik, of$
-    motivasyonlar: saglik, aile, cocuk, ekonomi
-    guclukler: sinirlilik, uykusuzluk, asiri_istek, aliskanlik, sabah_ilk_sigara, yogun_tuketim
+    motivasyonlar: saglik, aile, cocuk, ekonomi, isteksizlik, kararsızlık
+    guclukler: sinirlilik, uykusuzluk, asiri_istek, aliskanlik, sabah_ilk_sigara, yogun_tuketim, birakma_isteksizligi
     birakma_gecmisi: onceki_deneme, relaps
     bagimlilik: dusuk, orta, yuksek
         
