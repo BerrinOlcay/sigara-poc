@@ -88,9 +88,10 @@ def search(query, chunks, embeddings, client):
         similarities.append(similarity)
     
     # en yüksek benzerlik
-    best_index = similarities.index(max(similarities))
-    
-    return chunks[best_index]
+    top_indices = sorted(range(len(similarities)), key=lambda i: similarities[i], reverse=True)[:3]
+    top_chunks = [chunks[i] for i in top_indices]
+
+    return " ".join(top_chunks)
 
 def etiket_cikar(metin, client):
     prompt = f"""
