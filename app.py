@@ -109,7 +109,7 @@ def etiket_cikar(metin, client):
     
     tetikleyiciler: stres, kahve, cay, yemek_sonrasi, alkol, sosyal_ortam, yalnizlik, of$
     motivasyonlar: saglik, aile, cocuk, ekonomi, isteksizlik, kararsızlık
-    guclukler: sinirlilik, uykusuzluk, asiri_istek, aliskanlik, sabah_ilk_sigara, yogun_tuketim, birakma_isteksizligi
+    guclukler: sinirlilik, uykusuzluk, asiri_istek, aliskanlik, sabah_ilk_sigara, yogun_tuketim, zorlanma
     birakma_gecmisi: onceki_deneme, relaps
     bagimlilik: dusuk, orta, yuksek
         
@@ -136,6 +136,9 @@ def etiket_cikar(metin, client):
       "düşük", "orta", "yüksek", "Belirtilmedi"
     - Asla açıklama ekleme, sadece JSON döndür.
     - Hastanın ifadesinde zorluk, zorlanma, baş edememe, yoğun istek, alışkanlık veya kontrol kaybı ima ediliyorsa, bunları uygun "güçlükler" etiketi ile eşleştir.
+    - Eğer hasta “bırakmak istemiyorum”, “istemiyorum”, “gerek görmüyorum”, “umursamıyorum” gibi ifadeler kullanıyorsa motivasyonlara "isteksizlik" ekle.
+    - Eğer hasta “kararsızım”, “emin değilim”, “bir yanım istiyor bir yanım istemiyor” gibi ifadeler kullanıyorsa motivasyonlara "kararsizlik" ekle.
+    - Eğer hasta “zor”, “zorlanıyorum”, “dayanamıyorum”, “baş edemiyorum” gibi ifadeler kullanıyorsa gucluklere "zorlanma" ekle.
     """
         
     response = client.responses.create(
