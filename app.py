@@ -179,7 +179,23 @@ if st.button("Analiz Et"):
     rag_context = search(metin, chunks, embeddings, client)
     etiketler = etiket_cikar(metin, client)
     st.markdown("### Hasta Profili")
+    # Excel'den türetilmiş öneri kalıpları
+    ekstra_oneriler = []
 
+    if "kahve" in tetikleyici:
+        ekstra_oneriler.append("Kahve ile ilişkilenen sigara kullanımını azaltmak için kahve yerine bitki çayı gibi alternatif içecekler denenebilir.")
+
+    if "stres" in tetikleyici:
+        ekstra_oneriler.append("Stres anlarında sigara yerine nefes egzersizi veya kısa yürüyüş gibi alternatif baş etme yöntemleri önerilebilir.")
+
+    if "yemek" in tetikleyici:
+        ekstra_oneriler.append("Yemek sonrası sigara alışkanlığını kırmak için farklı bir rutin (örneğin su içmek veya kısa bir aktivite) oluşturulabilir.")
+
+    if "aile" in motivasyon:
+        ekstra_oneriler.append("Aile desteği sürece dahil edilerek bırakma motivasyonu güçlendirilebilir.")
+    
+    excel_baglami = "\n".join(ekstra_oneriler) if ekstra_oneriler else "Ekstra öneri kalıbı yok."
+    
     etiket = etiketler
 
     motivasyon = ", ".join(etiket.get("motivasyonlar", [])) or "Belirtilmedi"
@@ -215,6 +231,13 @@ if st.button("Analiz Et"):
         st.write("Belirlenemedi")
     
     prompt = f"""
+    
+    Sen bir klinik karar destek sistemisin.
+
+    Verilen rehber bağlamını ve davranışsal öneri kalıplarını birlikte değerlendirerek, hastaya özel, somut ve uygulanabilir öneriler üret.
+
+    Genel ifadelerden kaçın, mümkün olduğunca spesifik ve davranış odaklı öneriler ver.
+    
     Hasta ifadesinden çıkarılan etiketler:
     {etiketler}
     
@@ -246,6 +269,9 @@ Kurallar:
 
 Rehber Bağlamı:
 {rag_context}
+
+Excel'den türetilmiş davranışsal öneri kalıpları:
+{excel_baglami}
 
 Hasta ifadesi:
 {metin}
