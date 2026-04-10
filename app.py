@@ -179,6 +179,14 @@ if st.button("Analiz Et"):
     rag_context = search(metin, chunks, embeddings, client)
     etiketler = etiket_cikar(metin, client)
     st.markdown("### Hasta Profili")
+    
+    etiket = etiketler
+
+    motivasyon = ", ".join(etiket.get("motivasyonlar", [])) or "Belirtilmedi"
+    gucluk = ", ".join(etiket.get("guclukler", [])) or "Belirtilmedi"
+    tetikleyici = ", ".join(etiket.get("tetikleyiciler", [])) or "Belirtilmedi"
+    bagimlilik = etiket.get("bagimlilik") or "Belirtilmedi"
+
     # Excel'den türetilmiş öneri kalıpları
     ekstra_oneriler = []
 
@@ -196,13 +204,6 @@ if st.button("Analiz Et"):
     
     excel_baglami = "\n".join(ekstra_oneriler) if ekstra_oneriler else "Ekstra öneri kalıbı yok."
     
-    etiket = etiketler
-
-    motivasyon = ", ".join(etiket.get("motivasyonlar", [])) or "Belirtilmedi"
-    gucluk = ", ".join(etiket.get("guclukler", [])) or "Belirtilmedi"
-    tetikleyici = ", ".join(etiket.get("tetikleyiciler", [])) or "Belirtilmedi"
-    bagimlilik = etiket.get("bagimlilik") or "Belirtilmedi"
-
     st.write(f"*Motivasyon:* {motivasyon}")
     st.write(f"*Güçlük:* {gucluk}")
     st.write(f"*Tetikleyiciler:* {tetikleyici}")
