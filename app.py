@@ -175,7 +175,7 @@ st.write(f"Toplam parça sayısı: {len(chunks)}")
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    metin = st.text_area("Hasta Görüşmesi", height=250)
+    metin = st.text_area("Hasta Görüşmesi", height=700)
 
 if st.button("Analiz Et"):
     secili_chunks = chunks[::max(1, len(chunks)//200)][:200]
