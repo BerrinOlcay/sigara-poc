@@ -254,7 +254,7 @@ Aşağıdaki hasta ifadesini analiz et ve sadece aşağıdaki formatta cevap ver
 Ambivalans: (Var / Yok)
 Direnç: (Var / Yok)
 
-Klinik Yorum:
+Özet:
 (Kısa ve net 1-2 cümle. Hastanın ifadesindeki temel klinik durumu açıkça belirt.)
 
 Öneri:
