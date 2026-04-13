@@ -161,7 +161,10 @@ def etiket_cikar(metin, client):
 
 st.set_page_config(page_title="Klinik Karar Destek Sistemi", layout="centered")
 
-st.title("🚬 Sigara Bırakma Sürecinde Klinik Özet ve Öneri Sistemi: PoC Çalışması")
+st.markdown(
+    "<h2>🚬 Sigara Bırakma Sürecinde Klinik Özet ve Öneri Sistemi: PoC Çalışması</h2>",
+    unsafe_allow_html=True,
+)
 st.markdown("Bu sistem, hasta ifadelerini analiz ederek klinik karar desteği sağlar.")
 st.caption("Privacy by Design: Bu PoC kapsamında girilen hasta verileri anonim olarak işlenmekte olup kalıcı olarak saklanmamaktadır.")
 
